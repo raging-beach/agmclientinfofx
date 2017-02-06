@@ -1,5 +1,7 @@
 package com.agm.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class SystemUser {
@@ -15,6 +17,12 @@ public class SystemUser {
 	
 	public SystemUser() {
 		super();
+	}
+
+	public SystemUser(ResultSet rs) throws SQLException {
+		this.id = rs.getLong(1);
+		this.login = rs.getString(2);
+		this.password = rs.getString(3);
 	}
 
 	public Long getId() {

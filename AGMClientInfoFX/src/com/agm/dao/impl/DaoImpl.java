@@ -17,7 +17,7 @@ public class DaoImpl extends MySQLConnection implements Dao {
 	
 	@Override
 	public SystemUser getSystemUserByLogin(String login) {
-		final String query = "Select user_id from user where login = ?";
+		final String query = "Select user_id, login, password from user where login = ?";
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		
@@ -27,7 +27,7 @@ public class DaoImpl extends MySQLConnection implements Dao {
 			
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				System.out.println(rs.getString("USER_ID"));
+				return new SystemUser(rs);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

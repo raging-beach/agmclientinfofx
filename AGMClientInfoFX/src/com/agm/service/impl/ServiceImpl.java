@@ -20,7 +20,7 @@ public class ServiceImpl implements Service {
 	public String getLoginError(String userName, String password) {
 		if (CommonHelper.hasValidValue(userName)) {
 			final SystemUser user = this.dao.getSystemUserByLogin(userName);
-			if (user != null) {
+			if (user != null && CommonHelper.isEqual(user.getPassword(), password)) {
 				return Constants.EMPTY_STRING;
 			} else {
 				return Constants.USER_DOES_NOT_EXIST;
