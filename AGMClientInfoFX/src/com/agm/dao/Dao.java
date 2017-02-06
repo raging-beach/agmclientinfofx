@@ -1,5 +1,12 @@
 package com.agm.dao;
 
-public interface Dao {
+import java.util.List;
 
+import com.agm.model.Contact;
+import com.agm.model.SystemUser;
+
+public interface Dao {
+	public SystemUser getSystemUserByLogin(String login);
+	public List<SystemUser> getAllSystemUsers();
+	public List<Contact> getAllContacts();
 }

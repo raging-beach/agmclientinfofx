@@ -3,7 +3,9 @@ package com.agm.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class MySQLConnection {
 	
@@ -23,5 +25,22 @@ public class MySQLConnection {
 			e.printStackTrace();
 		}
 		return conn;
+	}
+	
+	public void closeConnectionObjects(ResultSet rs, Statement ps) {
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (ps != null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

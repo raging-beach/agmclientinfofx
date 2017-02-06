@@ -2,7 +2,10 @@ package com.agm;
 
 import java.io.IOException;
 
+import com.agm.comp.LoginDialog;
+
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -20,11 +23,14 @@ public class MainApp extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
+		Platform.setImplicitExit(true);
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Client Info");
 		
 		this.initRootLayout();
-		this.showClientOverview();
+		new LoginDialog();
+//		this.showLoginDialog();
+//		this.showClientOverview();
 	}
 	
 	/**
@@ -64,5 +70,9 @@ public class MainApp extends Application {
 	
 	public Stage getPrimaryStage() {
 		return primaryStage;
+	}
+	
+	public void showLoginDialog() {
+
 	}
 }
