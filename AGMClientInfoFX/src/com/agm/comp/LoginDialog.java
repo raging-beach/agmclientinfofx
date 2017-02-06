@@ -1,7 +1,5 @@
 package com.agm.comp;
 
-import java.util.Optional;
-
 import com.agm.service.Service;
 import com.agm.service.impl.ServiceImpl;
 import com.agm.utils.CommonHelper;
@@ -11,12 +9,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
