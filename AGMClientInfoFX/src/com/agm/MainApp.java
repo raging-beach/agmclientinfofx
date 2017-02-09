@@ -6,7 +6,9 @@ import com.agm.comp.LoginDialog;
 import com.agm.model.Contact;
 import com.agm.service.Service;
 import com.agm.service.impl.ServiceImpl;
+import com.agm.utils.Constants;
 import com.agm.view.ContactDetailController;
+import com.agm.view.ContactEditDialogController;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -16,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -68,7 +71,7 @@ public class MainApp extends Application {
 		try {
 			//Load MainStage from fxml
 			final FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/MainStage.fxml"));
+			loader.setLocation(MainApp.class.getResource(Constants.MAIN_STAGE));
 			this.rootLayout = loader.load();
 			
 			// Show the scene containing the main layout
@@ -85,7 +88,7 @@ public class MainApp extends Application {
 		try {
 			//Load ClientOverview
 			final FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/ContactDetail.fxml"));
+			loader.setLocation(MainApp.class.getResource(Constants.CONTACT_DETAIL));
 			final AnchorPane clientOverView = loader.load();
 			
 			//Set CLientOverview into the center of main layout
@@ -98,5 +101,43 @@ public class MainApp extends Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Opens a dialog to edit details for the specified person. If the user
+	 * clicks OK, the changes are saved into the provided person object and true
+	 * is returned.
+	 * 
+	 * @param person the person object to be edited
+	 * @return true if the user clicked OK, false otherwise.
+	 */
+	public boolean showContactEditDialog(Contact contact) {
+		try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+	        final FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource(Constants.CONTACT_EDIT));
+	        final AnchorPane page = (AnchorPane) loader.load();
+
+	        // Create the dialog Stage.
+	        final Stage dialogStage = new Stage();
+	        dialogStage.setTitle("Edit Person");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(primaryStage);
+	        final Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+
+	        // Set the person into the controller.
+	        final ContactEditDialogController controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+	        controller.setContact(contact);
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+
+	        return controller.isOkClicked();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
 }

@@ -1,6 +1,11 @@
 package com.agm.utils;
 
 public class Constants {
+	
+	// View Paths
+	public static final String MAIN_STAGE = "view/MainStage.fxml";
+	public static final String CONTACT_DETAIL = "view/ContactDetail.fxml";
+	public static final String CONTACT_EDIT = "view/ContactEditDialog.fxml";
 
 	public static final String EMPTY_STRING = "";
 	
