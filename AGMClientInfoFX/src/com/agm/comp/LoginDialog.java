@@ -31,8 +31,8 @@ public class LoginDialog {
 	
 	private void showLoginDialog() {
 		final Dialog<Pair<String, String>> dialog = new Dialog<>();
-		dialog.setTitle("Login Dialog");
-		dialog.setHeaderText("Look, a Custom Login Dialog");
+		dialog.setTitle("AGM Services System");
+		dialog.setHeaderText("Ready to take on today...");
 
 		// Set the icon (must be included in the project).
 //		dialog.setGraphic(new ImageView(this.getClass().getResource("public/images/login.png").toString()));

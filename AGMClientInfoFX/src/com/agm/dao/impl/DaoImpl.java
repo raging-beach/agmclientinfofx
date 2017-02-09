@@ -17,7 +17,13 @@ public class DaoImpl extends MySQLConnection implements Dao {
 	
 	@Override
 	public SystemUser getSystemUserByLogin(String login) {
-		final String query = "Select user_id, login, password from user where login = ?";
+		final String query = "Select u.user_id, u.login, u.password "
+				+ " , u.created_by, u.created_date, u.last_mod_by, u.last_mod_date "
+				+ " , c.first_name, c.last_name, c.primary_contact_number, c.secondary_contact_number"
+				+ " , c.created_by, c.created_date, c.last_mod_by, c.last_mod_date "
+				+ " From Rage.User u "
+				+ "  Left Join Rage.Contact c on c.contact_id = u.contact_id"
+				+ " Where u.login = ?";
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		

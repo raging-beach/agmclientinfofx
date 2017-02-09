@@ -1,5 +1,7 @@
 package com.agm.model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class Contact {
@@ -84,5 +86,17 @@ public class Contact {
 
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
+	}
+
+	public void setContactDetailsByUser(ResultSet rs) throws SQLException {
+		this.firstName = rs.getString(8);
+		this.lastName = rs.getString(9);
+		this.contactNumber = rs.getString(10);
+		this.secondaryContactNumber = rs.getString(11);
+		this.createdBy = rs.getString(12);
+		this.createdDate = rs.getDate(13);
+		this.lastModBy = rs.getString(14);
+		this.lastModDate = rs.getDate(15);
+		
 	}
 }

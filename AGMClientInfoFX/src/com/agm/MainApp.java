@@ -41,12 +41,12 @@ public class MainApp extends Application {
 			//Load MainStage from fxml
 			final FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/MainStage.fxml"));
-			rootLayout = loader.load();
+			this.rootLayout = loader.load();
 			
 			// Show the scene containing the main layout
-			final Scene scene = new Scene(rootLayout);
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			final Scene scene = new Scene(this.rootLayout);
+			this.primaryStage.setScene(scene);
+			this.primaryStage.show();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +61,7 @@ public class MainApp extends Application {
 			final AnchorPane clientOverView = loader.load();
 			
 			//Set CLientOverview into the center of main layout
-			rootLayout.setCenter(clientOverView);
+			this.rootLayout.setCenter(clientOverView);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,9 +70,5 @@ public class MainApp extends Application {
 	
 	public Stage getPrimaryStage() {
 		return primaryStage;
-	}
-	
-	public void showLoginDialog() {
-
 	}
 }

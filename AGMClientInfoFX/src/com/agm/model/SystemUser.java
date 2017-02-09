@@ -14,6 +14,7 @@ public class SystemUser {
 	private Date createdDate;
 	private String lastModBy;
 	private Date lastModDate;
+	private Contact contactDetails;
 	
 	public SystemUser() {
 		super();
@@ -23,6 +24,12 @@ public class SystemUser {
 		this.id = rs.getLong(1);
 		this.login = rs.getString(2);
 		this.password = rs.getString(3);
+		this.createdBy = rs.getString(4);
+		this.createdDate = rs.getDate(5);
+		this.lastModBy = rs.getString(6);
+		this.lastModDate = rs.getDate(7);
+		this.contactDetails = new Contact();
+		this.contactDetails.setContactDetailsByUser(rs);
 	}
 
 	public Long getId() {
@@ -87,5 +94,13 @@ public class SystemUser {
 
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
+	}
+
+	public Contact getContactDetails() {
+		return contactDetails;
+	}
+
+	public void setContactDetails(Contact contactDetails) {
+		this.contactDetails = contactDetails;
 	}
 }
