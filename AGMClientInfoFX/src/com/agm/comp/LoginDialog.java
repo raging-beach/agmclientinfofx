@@ -1,5 +1,6 @@
 package com.agm.comp;
 
+import com.agm.MainApp;
 import com.agm.service.Service;
 import com.agm.service.impl.ServiceImpl;
 import com.agm.utils.CommonHelper;
@@ -86,8 +87,9 @@ public class LoginDialog {
 				if (CommonHelper.hasValidValue(errMsg)) {
 					errLabel.setText(errMsg);
 				} else {
-					//Successful login
 					dialog.close();
+					final MainApp mainApp = new MainApp();
+					mainApp.showContactDetailOverview();
 				}
 			}
 		});

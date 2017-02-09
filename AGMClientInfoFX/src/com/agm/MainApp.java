@@ -3,9 +3,15 @@ package com.agm;
 import java.io.IOException;
 
 import com.agm.comp.LoginDialog;
+import com.agm.model.Contact;
+import com.agm.service.Service;
+import com.agm.service.impl.ServiceImpl;
+import com.agm.view.ContactDetailController;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +23,28 @@ public class MainApp extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 	
+	private ObservableList<Contact> contacts = FXCollections.observableArrayList();
+	private Service service;
+	
+	public MainApp() {
+		this.service = new ServiceImpl();
+		this.contacts.addAll(this.service.getAllContacts());
+	}
+	
+	/*
+	 * Getters and Setters
+	 */
+	public Stage getPrimaryStage() {
+		return primaryStage;
+	}
+	
+	public ObservableList<Contact> getContacts() {
+        return contacts;
+    }
+	
+	/*
+	 * Methods
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -28,9 +56,9 @@ public class MainApp extends Application {
 		this.primaryStage.setTitle("Client Info");
 		
 		this.initRootLayout();
-		new LoginDialog();
+//		new LoginDialog();
 //		this.showLoginDialog();
-//		this.showClientOverview();
+		this.showContactDetailOverview();
 	}
 	
 	/**
@@ -53,22 +81,22 @@ public class MainApp extends Application {
 		}
 	}
 	
-	public void showClientOverview() {
+	public void showContactDetailOverview() {
 		try {
 			//Load ClientOverview
 			final FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/ClientOverviewScene.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/ContactDetail.fxml"));
 			final AnchorPane clientOverView = loader.load();
 			
 			//Set CLientOverview into the center of main layout
 			this.rootLayout.setCenter(clientOverView);
+			
+			 // Give the controller access to the main app.
+	        final ContactDetailController controller = loader.getController();
+	        controller.setMainApp(this);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	public Stage getPrimaryStage() {
-		return primaryStage;
 	}
 }

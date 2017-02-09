@@ -1,11 +1,16 @@
 package com.agm.service.impl;
 
+import java.util.List;
+
 import com.agm.dao.Dao;
 import com.agm.dao.impl.DaoImpl;
+import com.agm.model.Contact;
 import com.agm.model.SystemUser;
 import com.agm.service.Service;
 import com.agm.utils.CommonHelper;
 import com.agm.utils.Constants;
+
+import javafx.collections.ObservableList;
 
 public class ServiceImpl implements Service {
 	
@@ -28,5 +33,10 @@ public class ServiceImpl implements Service {
 		} else {
 			return Constants.USERNAME_REQUIRED;
 		}
+	}
+
+	@Override
+	public ObservableList<Contact> getAllContacts() {
+		return this.dao.getAllContacts();
 	}
 }

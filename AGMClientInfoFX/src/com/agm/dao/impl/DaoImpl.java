@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 import com.agm.connection.MySQLConnection;
 import com.agm.dao.Dao;
 import com.agm.model.Contact;
 import com.agm.model.SystemUser;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class DaoImpl extends MySQLConnection implements Dao {
 
@@ -43,7 +45,7 @@ public class DaoImpl extends MySQLConnection implements Dao {
 	}
 	
 	@Override
-	public List<SystemUser> getAllSystemUsers() {
+	public ObservableList<SystemUser> getAllSystemUsers() {
 		final String query = "Select user_id from user";
 		ResultSet rs = null;
 		PreparedStatement ps = null;
@@ -62,8 +64,24 @@ public class DaoImpl extends MySQLConnection implements Dao {
 	}
 
 	@Override
-	public List<Contact> getAllContacts() {
-		// TODO Auto-generated method stub
+	public ObservableList<Contact> getAllContacts() {
+		final String query = "Select contact_id, first_name, last_name, primary_contact_number"
+				+ ", secondary_contact_number, created_by, created_date, last_mod_by, last_mod_date"
+				+ " From Rage.Contact ";
+		ResultSet rs = null;
+		PreparedStatement ps = null;
+		
+		try {
+			final ObservableList<Contact> contacts = FXCollections.observableArrayList();
+			ps = this.conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				contacts.add(new Contact(rs));
+			}
+			return contacts;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
