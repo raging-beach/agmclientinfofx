@@ -1,4 +1,4 @@
-package com.agm.view;
+package fxml;
 
 import com.agm.model.Contact;
 

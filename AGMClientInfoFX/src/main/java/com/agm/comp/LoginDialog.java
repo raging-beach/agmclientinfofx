@@ -1,6 +1,7 @@
 package com.agm.comp;
 
 import com.agm.MainApp;
+import com.agm.model.SystemUser;
 import com.agm.service.Service;
 import com.agm.service.impl.ServiceImpl;
 import com.agm.utils.CommonHelper;
@@ -83,13 +84,15 @@ public class LoginDialog {
 		loginButton.addEventFilter(EventType.ROOT, e -> {
 			if (e.getEventType().equals(ActionEvent.ACTION)) {
 				e.consume();
-				final String errMsg = this.service.getLoginError(username.getText(), password.getText());
-				if (CommonHelper.hasValidValue(errMsg)) {
-					errLabel.setText(errMsg);
+				final SystemUser user = this.service.getLoginError(username.getText(), password.getText());
+				if (CommonHelper.hasValidValue(user.getLoginError())) {
+					errLabel.setText(user.getLoginError());
 				} else {
 					dialog.close();
 					final MainApp mainApp = new MainApp();
-					mainApp.showContactDetailOverview();
+					mainApp.setLoggedInUser(user);
+					mainApp.start(mainApp.getPrimaryStage());
+//					mainApp.showContactDetailOverview();
 				}
 			}
 		});

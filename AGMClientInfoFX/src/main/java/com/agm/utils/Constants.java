@@ -3,9 +3,9 @@ package com.agm.utils;
 public class Constants {
 	
 	// View Paths
-	public static final String MAIN_STAGE = "view/MainStage.fxml";
-	public static final String CONTACT_DETAIL = "view/ContactDetail.fxml";
-	public static final String CONTACT_EDIT = "view/ContactEditDialog.fxml";
+	public static final String MAIN_STAGE_FXML = "/fxml/MainStage.fxml";
+	public static final String CONTACT_DETAIL_FXML = "/fxml/ContactDetail.fxml";
+	public static final String CONTACT_EDIT_FXML = "/fxml/ContactEditDialog.fxml";
 
 	public static final String EMPTY_STRING = "";
 	

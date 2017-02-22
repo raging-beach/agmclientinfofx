@@ -15,6 +15,7 @@ public class SystemUser {
 	private String lastModBy;
 	private Date lastModDate;
 	private Contact contactDetails;
+	private String loginError;
 	
 	public SystemUser() {
 		super();
@@ -30,6 +31,10 @@ public class SystemUser {
 		this.lastModDate = rs.getDate(7);
 		this.contactDetails = new Contact();
 		this.contactDetails.setContactDetailsByUser(rs);
+	}
+
+	public SystemUser(String errMsg) {
+		this.loginError = errMsg;
 	}
 
 	public Long getId() {
@@ -102,5 +107,13 @@ public class SystemUser {
 
 	public void setContactDetails(Contact contactDetails) {
 		this.contactDetails = contactDetails;
+	}
+
+	public String getLoginError() {
+		return loginError;
+	}
+
+	public void setLoginError(String loginError) {
+		this.loginError = loginError;
 	}
 }

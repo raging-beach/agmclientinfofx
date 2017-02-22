@@ -22,16 +22,16 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public String getLoginError(String userName, String password) {
+	public SystemUser getLoginError(String userName, String password) {
 		if (CommonHelper.hasValidValue(userName)) {
 			final SystemUser user = this.dao.getSystemUserByLogin(userName);
 			if (user != null && CommonHelper.isEqual(user.getPassword(), password)) {
-				return Constants.EMPTY_STRING;
+				return user;
 			} else {
-				return Constants.USER_DOES_NOT_EXIST;
+				return new SystemUser(Constants.USER_DOES_NOT_EXIST);
 			}
 		} else {
-			return Constants.USERNAME_REQUIRED;
+			return new SystemUser(Constants.USERNAME_REQUIRED);
 		}
 	}
 
