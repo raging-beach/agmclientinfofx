@@ -82,7 +82,7 @@ public class MainApp extends Application {
 			this.primaryStage.show();
 			
 		} catch (IOException e) {
-			e.printStackTrace();
+			e.printStackTrace();	
 		}
 	}
 }

@@ -5,6 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
 import com.agm.connection.MySQLConnection;
 import com.agm.dao.Dao;
 import com.agm.model.Contact;
@@ -16,6 +21,19 @@ import javafx.collections.ObservableList;
 public class DaoImpl extends MySQLConnection implements Dao {
 
 	private Connection conn = this.getConnection();
+	
+	protected SessionFactory sessionFactory;
+	
+	protected void setup() {
+		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+		        .configure() // configures settings from hibernate.cfg.xml
+		        .build();
+		try {
+		    sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+		} catch (Exception ex) {
+		    StandardServiceRegistryBuilder.destroy(registry);
+		}
+    }
 	
 	@Override
 	public SystemUser getSystemUserByLogin(String login) {
