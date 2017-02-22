@@ -3,30 +3,22 @@ package com.agm;
 import java.io.IOException;
 
 import com.agm.comp.LoginDialog;
-import com.agm.model.Contact;
 import com.agm.model.SystemUser;
-import com.agm.service.Service;
-import com.agm.service.impl.ServiceImpl;
 import com.agm.utils.Constants;
 
-import fxml.ContactDetailController;
-import fxml.ContactEditDialogController;
 import fxml.ContentNavigator;
 import fxml.MainStageController;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
 	private Stage primaryStage;
-	private AnchorPane rootLayout;
+	private AnchorPane rootPane;
 	
 	private SystemUser loggedInUser;
 	
@@ -72,10 +64,6 @@ public class MainApp extends Application {
 		}
 	}
 	
-	public void showLoginDialog() {
-		
-	}
-	
 	/**
 	 * Initializes the Main Layout
 	 */
@@ -83,11 +71,10 @@ public class MainApp extends Application {
 		try {
 			//Load MainStage from fxml
 			final FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(MainApp.class.getResource(Constants.MAIN_STAGE_FXML));
-			this.rootLayout = (AnchorPane) loader.load(getClass().getResourceAsStream(Constants.MAIN_STAGE_FXML));
+			this.rootPane = (AnchorPane) loader.load(getClass().getResourceAsStream(Constants.MAIN_STAGE_FXML));
 			
 			// Show the scene containing the main layout
-			final Scene scene = new Scene(this.rootLayout);
+			final Scene scene = new Scene(this.rootPane);
 			final MainStageController controller = loader.getController();
 	        ContentNavigator.setController(controller);
 
@@ -95,30 +82,6 @@ public class MainApp extends Application {
 			this.primaryStage.show();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void showContactDetailOverview() {
-		try {
-			
-			//Load ClientOverview
-			final FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource(Constants.CONTACT_DETAIL_FXML));
-			final AnchorPane clientOverView = loader.load();
-			MainStageController mainStageController = new MainStageController();
-			//Set CLientOverview into the center of main layout
-//			this.rootLayout.setCenter(clientOverView);
-			final Scene scene = new Scene(this.rootLayout);
-			this.primaryStage.setScene(scene);
-			this.primaryStage.show();
-			
-			 // Give the controller access to the main app.
-	        final ContactDetailController controller = loader.getController();
-//	        controller.setMainApp(this);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
