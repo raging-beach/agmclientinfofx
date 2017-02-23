@@ -4,13 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import com.agm.utils.Constants;
 
 import javafx.beans.property.LongProperty;
@@ -18,29 +11,16 @@ import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-@Entity
-@Table(name = "contact")
 public class Contact {
-
-	@Id
-	@Column(name = "contact_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private LongProperty id;
-	@Column(name = "first_name")
 	private StringProperty firstName;
-	@Column(name = "last_name")
 	private StringProperty lastName;
-	@Column(name = "primary_contact_number")
 	private StringProperty contactNumber;
-	@Column(name = "secondary_contact_number")
 	private StringProperty secondaryContactNumber;
-	@Column(name = "created_by")
 	private String createdBy;
-	@Column(name = "created_date")
 	private Date createdDate;
-	@Column(name = "last_mod_by")
 	private String lastModBy;
-	@Column(name = "last_mod_date")
 	private Date lastModDate;
 	
 	public Contact(ResultSet rs) throws SQLException {
