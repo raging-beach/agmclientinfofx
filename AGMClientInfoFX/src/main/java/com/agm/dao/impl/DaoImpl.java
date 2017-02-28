@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.agm.connection.MySQLConnection;
+import com.agm.connection.H2SQLConnection;
 import com.agm.dao.Dao;
 import com.agm.model.Contact;
 import com.agm.model.SystemUser;
@@ -13,7 +13,7 @@ import com.agm.model.SystemUser;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class DaoImpl extends MySQLConnection implements Dao {
+public class DaoImpl extends H2SQLConnection implements Dao {
 
 	private Connection conn = this.getConnection();
 	
@@ -23,8 +23,8 @@ public class DaoImpl extends MySQLConnection implements Dao {
 				+ " , u.created_by, u.created_date, u.last_mod_by, u.last_mod_date "
 				+ " , c.first_name, c.last_name, c.primary_contact_number, c.secondary_contact_number"
 				+ " , c.created_by, c.created_date, c.last_mod_by, c.last_mod_date "
-				+ " From Rage.User u "
-				+ "  Left Join Rage.Contact c on c.contact_id = u.contact_id"
+				+ " From User u "
+				+ "  Left Join Contact c on c.contact_id = u.contact_id"
 				+ " Where u.login = ?";
 		ResultSet rs = null;
 		PreparedStatement ps = null;
@@ -67,7 +67,7 @@ public class DaoImpl extends MySQLConnection implements Dao {
 	public ObservableList<Contact> getAllContacts() {
 		final String query = "Select contact_id, first_name, last_name, primary_contact_number"
 				+ ", secondary_contact_number, created_by, created_date, last_mod_by, last_mod_date"
-				+ " From Rage.Contact ";
+				+ " From Contact ";
 		ResultSet rs = null;
 		PreparedStatement ps = null;
 		
