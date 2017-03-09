@@ -7,16 +7,10 @@
 	<name>AGMClientInfoFX</name>
 
 	<properties>
-		<mysql.connector.version>5.1.40</mysql.connector.version>
 		<h2.database.version>1.4.193</h2.database.version>
 	</properties>
 	
 	<dependencies>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.connector.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
