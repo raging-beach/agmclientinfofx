@@ -9,5 +9,6 @@ public interface Service {
 	
 	public SystemUser getLoginError(String userName, String password);
 	public ObservableList<Contact> getAllContacts();
-
+	public void saveContact(Contact contact);
+	public boolean deleteContact(Long contactId);
 }

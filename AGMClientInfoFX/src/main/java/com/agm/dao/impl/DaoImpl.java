@@ -81,8 +81,73 @@ public class DaoImpl extends H2SQLConnection implements Dao {
 			return contacts;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			this.closeConnectionObjects(rs, ps);
 		}
 		return null;
+	}
+
+	@Override
+	public void saveContact(Contact contact) {
+		final StringBuffer sql = new StringBuffer();
+		if (contact.getId() == null || contact.getId() > 0 == false) {
+			//Update
+			sql.append("Insert into Contact (first_name, last_name, primary_contact_number");
+			sql.append(", secondary_contact_number, created_by, created_date)");
+			sql.append(" Values (?, ?, ?, ?, ?, now()) ");
+			PreparedStatement ps = null;
+			
+			try {
+				ps = this.conn.prepareStatement(sql.toString());
+				ps.setString(1, contact.getFirstName());
+				ps.setString(2, contact.getLastName());
+				ps.setString(3, contact.getContactNumber());
+				ps.setString(4, contact.getSecondaryContactNumber());
+				ps.setString(5, contact.getCreatedBy());
+				ps.executeUpdate();
+				this.closeConnectionObjects(null, ps);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				this.closeConnectionObjects(null, ps);
+			}
+
+		} else {
+			//Create New
+			sql.append("Update Contact ");
+			sql.append("Set first_name = ?, last_name = ?, primary_contact_number = ?");
+			sql.append(", secondary_contact_number = ?, last_mod_by = ?, last_mod_date = now() ");
+			sql.append("Where contact_id = ?");
+			PreparedStatement ps = null;
+			
+			try {
+				ps = this.conn.prepareStatement(sql.toString());
+				ps.setString(1, contact.getFirstName());
+				ps.setString(2, contact.getLastName());
+				ps.setString(3, contact.getContactNumber());
+				ps.setString(4, contact.getSecondaryContactNumber());
+				ps.setString(5, contact.getLastModBy());
+				ps.setInt(6, contact.getId().intValue());
+				ps.executeUpdate();
+				this.closeConnectionObjects(null, ps);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				this.closeConnectionObjects(null, ps);
+			}
+		}
+	}
+
+	@Override
+	public boolean deleteContact(Long contactId) {
+		PreparedStatement ps = null;
+		
+		try {
+			ps = this.conn.prepareStatement("Delete from Contact where contact_id = ?");
+			ps.setInt(1, contactId.intValue());
+			return ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			this.closeConnectionObjects(null, ps);
+		}
+		return false;
 	}
 
 }

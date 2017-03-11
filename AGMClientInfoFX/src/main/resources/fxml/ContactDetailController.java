@@ -107,9 +107,12 @@ public class ContactDetailController {
     @FXML
     private void deleteContact() {
         final int selectedIndex = this.contactTable.getSelectionModel().getSelectedIndex();
+        final Contact selectedContact = this.contactTable.getSelectionModel().getSelectedItem();
         
         if (selectedIndex >= 0) {
+        	this.service.deleteContact(selectedContact.getId());
         	this.contactTable.getItems().remove(selectedIndex);
+        	//TODO: error message when delete failed
         } else {
             // Nothing selected.
             final Alert alert = new Alert(AlertType.WARNING);

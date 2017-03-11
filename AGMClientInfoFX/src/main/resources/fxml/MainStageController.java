@@ -32,4 +32,12 @@ public class MainStageController implements Initializable {
     public void handleContactManagement() {
     	ContentNavigator.loadContent(Constants.CONTACT_DETAIL_FXML);
     }
+    @FXML
+    public void handleClientManagement() {
+    	ContentNavigator.loadContent(Constants.CONTACT_DETAIL_FXML);
+    }
+    @FXML
+    public void handleUserManagement() {
+    	ContentNavigator.loadContent(Constants.CONTACT_DETAIL_FXML);
+    }
 }

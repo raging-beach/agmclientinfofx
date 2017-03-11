@@ -1,6 +1,8 @@
 package fxml;
 
 import com.agm.model.Contact;
+import com.agm.service.Service;
+import com.agm.service.impl.ServiceImpl;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -23,6 +25,11 @@ public class ContactEditDialogController {
     private Stage dialogStage;
     private Contact contact;
     private boolean okClicked = false;
+    private Service service;
+    
+    public ContactEditDialogController() {
+    	this.service = new ServiceImpl();
+	}
     
     /**
      * Initializes the controller class. This method is automatically called
@@ -74,7 +81,8 @@ public class ContactEditDialogController {
             this.contact.setLastName(this.lastNameField.getText());
             this.contact.setContactNumber(this.contactNumberField.getText());
             this.contact.setSecondaryContactNumber(this.secondaryContactNumberField.getText());
-
+            this.service.saveContact(this.contact);
+            
             this.okClicked = true;
             this.dialogStage.close();
         }

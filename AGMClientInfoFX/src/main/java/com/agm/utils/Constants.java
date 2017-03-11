@@ -6,6 +6,8 @@ public class Constants {
 	public static final String MAIN_STAGE_FXML = "/fxml/MainStage.fxml";
 	public static final String CONTACT_DETAIL_FXML = "/fxml/ContactDetail.fxml";
 	public static final String CONTACT_EDIT_FXML = "/fxml/ContactEditDialog.fxml";
+	
+	public static final String USER_EDIT_FXML = "/fxml/UserEditDialog.fxml";
 
 	public static final String EMPTY_STRING = "";
 	

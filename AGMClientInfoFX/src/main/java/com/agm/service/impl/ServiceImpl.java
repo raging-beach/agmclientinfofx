@@ -1,7 +1,5 @@
 package com.agm.service.impl;
 
-import java.util.List;
-
 import com.agm.dao.Dao;
 import com.agm.dao.impl.DaoImpl;
 import com.agm.model.Contact;
@@ -38,5 +36,15 @@ public class ServiceImpl implements Service {
 	@Override
 	public ObservableList<Contact> getAllContacts() {
 		return this.dao.getAllContacts();
+	}
+
+	@Override
+	public void saveContact(Contact contact) {
+		this.dao.saveContact(contact);
+	}
+
+	@Override
+	public boolean deleteContact(Long contactId) {
+		return this.dao.deleteContact(contactId);
 	}
 }
