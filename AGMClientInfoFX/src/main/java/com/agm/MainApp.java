@@ -20,7 +20,7 @@ public class MainApp extends Application {
 	private Stage primaryStage;
 	private AnchorPane rootPane;
 	
-	private SystemUser loggedInUser;
+	private static SystemUser loggedInUser;
 	
 	public MainApp() {
 		
@@ -33,12 +33,16 @@ public class MainApp extends Application {
 		return primaryStage;
 	}
 	
-	public SystemUser getLoggedInUser() {
+	public static SystemUser getLoggedInUser() {
 		return loggedInUser;
 	}
 
-	public void setLoggedInUser(SystemUser loggedInUser) {
-		this.loggedInUser = loggedInUser;
+	public static void setLoggedInUser(SystemUser user) {
+		loggedInUser = user;
+	}
+	
+	public static String getSessionUserName() {
+		return loggedInUser.getLogin();
 	}
 
 	/*

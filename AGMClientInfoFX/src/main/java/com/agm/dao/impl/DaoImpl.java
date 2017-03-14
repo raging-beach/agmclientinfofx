@@ -87,7 +87,7 @@ public class DaoImpl extends H2SQLConnection implements Dao {
 	}
 
 	@Override
-	public void saveContact(Contact contact) {
+	public void saveContact(Contact contact, String userLogin) {
 		final StringBuffer sql = new StringBuffer();
 		if (contact.getId() == null || contact.getId() > 0 == false) {
 			//Update
@@ -102,7 +102,7 @@ public class DaoImpl extends H2SQLConnection implements Dao {
 				ps.setString(2, contact.getLastName());
 				ps.setString(3, contact.getContactNumber());
 				ps.setString(4, contact.getSecondaryContactNumber());
-				ps.setString(5, contact.getCreatedBy());
+				ps.setString(5, userLogin);
 				ps.executeUpdate();
 				this.closeConnectionObjects(null, ps);
 			} catch (SQLException e) {
@@ -124,7 +124,7 @@ public class DaoImpl extends H2SQLConnection implements Dao {
 				ps.setString(2, contact.getLastName());
 				ps.setString(3, contact.getContactNumber());
 				ps.setString(4, contact.getSecondaryContactNumber());
-				ps.setString(5, contact.getLastModBy());
+				ps.setString(5, userLogin);
 				ps.setInt(6, contact.getId().intValue());
 				ps.executeUpdate();
 				this.closeConnectionObjects(null, ps);

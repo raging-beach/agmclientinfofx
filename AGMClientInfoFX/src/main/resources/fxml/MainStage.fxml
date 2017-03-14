@@ -6,12 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MainStageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MainStageController">
    <children>
       <VBox prefWidth="1200.0">
          <children>
             <MenuBar>
                <menus>
+                  <Menu fx:id="loggedUserMenu" mnemonicParsing="false" text="test">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Logout" />
+                    </items>
+                  </Menu>
                   <Menu mnemonicParsing="false" text="Info Management">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#handleClientManagement" text="Clients" />

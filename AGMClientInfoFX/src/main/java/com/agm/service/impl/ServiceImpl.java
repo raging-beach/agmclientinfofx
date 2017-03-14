@@ -39,8 +39,8 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public void saveContact(Contact contact) {
-		this.dao.saveContact(contact);
+	public void saveContact(Contact contact, String userLogin) {
+		this.dao.saveContact(contact, userLogin);
 	}
 
 	@Override

@@ -9,6 +9,6 @@ public interface Dao {
 	public SystemUser getSystemUserByLogin(String login);
 	public ObservableList<SystemUser> getAllSystemUsers();
 	public ObservableList<Contact> getAllContacts();
-	public void saveContact(Contact contact);
+	public void saveContact(Contact contact, String userLogin);
 	public boolean deleteContact(Long contactId);
 }

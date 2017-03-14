@@ -147,6 +147,12 @@ public class Contact {
 		this.createdDate = rs.getDate(13);
 		this.lastModBy = rs.getString(14);
 		this.lastModDate = rs.getDate(15);
-
+	}
+	
+	public String getFullName() {
+		if (this.firstName != null && this.lastName != null) {
+			return this.getFirstName() + " " + this.getLastName();
+		}
+		return "";
 	}
 }

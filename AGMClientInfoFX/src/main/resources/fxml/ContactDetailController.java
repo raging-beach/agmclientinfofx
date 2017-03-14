@@ -43,6 +43,10 @@ public class ContactDetailController {
 	@FXML
 	private Label secondaryContactLabel;
 	@FXML
+	private Label createdByLabel;
+	@FXML
+	private Label lastModByLabel;
+	@FXML
 	private Label notesLabel;
 	
 	/**
@@ -89,7 +93,7 @@ public class ContactDetailController {
             this.lastNameLabel.setText(contact.getLastName());
             this.primaryContactLabel.setText(contact.getContactNumber());
             this.secondaryContactLabel.setText(contact.getSecondaryContactNumber());
-
+            this.createdByLabel.setText(contact.getCreatedBy());
             // TODO: We need a way to convert the birthday into a String! 
             // birthdayLabel.setText(...);
         } else {
@@ -98,6 +102,7 @@ public class ContactDetailController {
         	this.lastNameLabel.setText("");
         	this.primaryContactLabel.setText("");
         	this.secondaryContactLabel.setText("");
+        	this.createdByLabel.setText(MainApp.getSessionUserName());
         }
     }
     

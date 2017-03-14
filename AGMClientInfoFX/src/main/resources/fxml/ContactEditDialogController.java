@@ -1,5 +1,6 @@
 package fxml;
 
+import com.agm.MainApp;
 import com.agm.model.Contact;
 import com.agm.service.Service;
 import com.agm.service.impl.ServiceImpl;
@@ -81,7 +82,7 @@ public class ContactEditDialogController {
             this.contact.setLastName(this.lastNameField.getText());
             this.contact.setContactNumber(this.contactNumberField.getText());
             this.contact.setSecondaryContactNumber(this.secondaryContactNumberField.getText());
-            this.service.saveContact(this.contact);
+            this.service.saveContact(this.contact, MainApp.getSessionUserName());
             
             this.okClicked = true;
             this.dialogStage.close();
