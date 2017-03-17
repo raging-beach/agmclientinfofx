@@ -7,11 +7,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.ContactDetailController">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.ContactDetailController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -30,46 +31,77 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label text="Contact Info" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="5.0" />
-                  <GridPane AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="30.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="First Name" />
-                        <Label text="Last Name" GridPane.rowIndex="1" />
-                        <Label text="Contact Number #1" GridPane.rowIndex="2" />
-                        <Label text="Contact Number #2" GridPane.rowIndex="3" />
-                        <Label text="Created By" GridPane.rowIndex="4" />
-                        <Label text="Notes" GridPane.rowIndex="5" />
-                        <Label fx:id="firstNameLabel" text="Label" GridPane.columnIndex="1" />
-                        <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="primaryContactLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="secondaryContactLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="createdByLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label fx:id="notesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="Label" GridPane.rowIndex="6" />
-                        <Label text="Label" GridPane.rowIndex="7" />
-                     </children>
-                  </GridPane>
-                  <ButtonBar layoutX="122.0" layoutY="251.0" prefHeight="40.0" prefWidth="200.0">
-                    <buttons>
-                      <Button mnemonicParsing="false" onAction="#handleNewContact" text="New" />
-                        <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
-                        <Button mnemonicParsing="false" onAction="#deleteContact" text="Delete" />
-                    </buttons>
-                  </ButtonBar>
+                  <BorderPane>
+                     <center>
+                        <GridPane BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="268.0" minWidth="10.0" prefWidth="167.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="379.0" minWidth="10.0" prefWidth="379.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="First Name" />
+                              <Label text="Last Name" GridPane.rowIndex="1" />
+                              <Label text="Contact Number #1" GridPane.rowIndex="2" />
+                              <Label text="Contact Number #2" GridPane.rowIndex="3" />
+                              <Label text="Street Address" GridPane.rowIndex="4" />
+                              <Label text="City" GridPane.rowIndex="5" />
+                              <Label fx:id="firstNameLabel" text="Label" GridPane.columnIndex="1" />
+                              <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="primaryContactLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label fx:id="secondaryContactLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="createdByLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                              <Label fx:id="notesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                              <Label text="Province" GridPane.rowIndex="6" />
+                              <Label text="Country" GridPane.rowIndex="7" />
+                              <Label text="TIN #" GridPane.rowIndex="8" />
+                              <Label text="SSS #" GridPane.rowIndex="9" />
+                              <Label text="Notes" GridPane.rowIndex="10" />
+                              <Label text="Created By" GridPane.rowIndex="11" />
+                              <Label text="Created Date" GridPane.rowIndex="12" />
+                              <Label text="Last Modified By" GridPane.rowIndex="13" />
+                              <Label text="Last Modified Date" GridPane.rowIndex="14" />
+                              <Label fx:id="streetLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="cityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label fx:id="provinceLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Label fx:id="countryLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Label fx:id="tinLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <Label fx:id="sssLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <Label fx:id="createdDateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                              <Label fx:id="lastModByLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                              <Label fx:id="lastModDateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                           </children>
+                        </GridPane>
+                     </center>
+                     <top>
+                        <Label text="Contact Info" BorderPane.alignment="CENTER" />
+                     </top>
+                     <bottom>
+                        <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                          <buttons>
+                            <Button mnemonicParsing="false" onAction="#handleNewContact" text="New" />
+                              <Button mnemonicParsing="false" onAction="#handleEditPerson" text="Edit" />
+                              <Button mnemonicParsing="false" onAction="#deleteContact" text="Delete" />
+                          </buttons>
+                        </ButtonBar>
+                     </bottom>
+                  </BorderPane>
                </children>
             </AnchorPane>
         </items>

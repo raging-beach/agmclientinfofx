@@ -43,9 +43,25 @@ public class ContactDetailController {
 	@FXML
 	private Label secondaryContactLabel;
 	@FXML
+	private Label streetLabel;
+	@FXML
+	private Label cityLabel;
+	@FXML
+	private Label provinceLabel;
+	@FXML
+	private Label countryLabel;
+	@FXML
+	private Label tinLabel;
+	@FXML
+	private Label sssLabel;
+	@FXML
 	private Label createdByLabel;
 	@FXML
 	private Label lastModByLabel;
+	@FXML
+	private Label createdDateLabel;
+	@FXML
+	private Label lastModDateLabel;
 	@FXML
 	private Label notesLabel;
 	
